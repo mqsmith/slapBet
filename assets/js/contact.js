@@ -8,7 +8,7 @@ var config = {
     appId: "1:651388190757:web:ec6bfb4ea34fa69b"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 
 console.log("Contact Page");
