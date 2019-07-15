@@ -18,6 +18,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 </head>
 
 <body>
@@ -54,39 +55,42 @@
     </nav>
 
     <!-- --------- Content Below ------------- -->
-   <div class="container">
+    <div class="container">
 
-   
+
         <br>
         <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter email">
 
             </div>
+            <div class="contactMethod">
+                <p>Preferred Contact Method</p>
 
-            <p>Preferred Contact Method</p>
+                Text: <input type="radio" name="radioName" value="text"> <br>
 
-            Text: <input type="radio" id="text"> <br>
+                Phone: <input type="radio" name="radioName" value="phone"> <br>
 
-            Phone: <input type="radio" id="phone"> <br>
+                Email: <input type="radio" name="radioName" value="email"> <br>
 
-            Email: <input type="radio" id="email"> <br>
+            </div>
 
 
 
             <br>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Messages</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="message" rows="3"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="submit">Submit</button>
         </form>
     </div>
 
     <script src="assets/js/contact.js"></script>
+
 </body>
 
 </html>
