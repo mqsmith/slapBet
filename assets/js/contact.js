@@ -1,3 +1,16 @@
+var config = {
+    apiKey: "AIzaSyDb61eAKxoJbSt9g6NjdhSe2wa9xd4nSr0",
+    authDomain: "slapbet-ecc3b.firebaseapp.com",
+    databaseURL: "https://slapbet-ecc3b.firebaseio.com",
+    projectId: "slapbet-ecc3b",
+    storageBucket: "",
+    messagingSenderId: "651388190757",
+    appId: "1:651388190757:web:ec6bfb4ea34fa69b"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
 console.log("Contact Page");
 
 // 2. Button for adding User
