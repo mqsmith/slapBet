@@ -13,6 +13,8 @@ var firebaseConfig = {
 
 var database = firebase.database();
 
+// $("#highlights").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
+//         " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
 
 
 $("#login").on("click", function (event) {
