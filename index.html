@@ -63,24 +63,28 @@
 
     <div class="container" id="mainContainer">
         <div class="row">
-            <div class="col-lg-8">
-                <table class="table table-hover">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pick a League
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <button class="dropdown-item" id="mls-button" type="button">MLS-soccer</button>
-                            <button class="dropdown-item" id="nfl-button" type="button">NFL-football</button>
-                        </div>
+            <div class="col-lg-6">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pick a League
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">MLS-soccer</button>
+                        <button class="dropdown-item" type="button">NFL-football</button>
                     </div>
+                </div>
+                <table class="table table-hover">
+
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <h5></h5>
+                            <th scope="col">
+                                <h5>Teams Playing</h5>
+                            </th>
+                            <th scope="col">
+                                <h5>H2H Odds</h5>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="matches">
@@ -88,31 +92,23 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        Realtime Betting Updates
+                        Game Highlights
                     </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                    Title</cite></footer>
-                        </blockquote>
+                    <div class="card-body" id="highlights">
+
                     </div>
                 </div>
             </div>
+
         </div>
-<<<<<<< HEAD
-        <div class="row">
-            <div class="col-lg-8"></div>
-=======
 
         <!-- Login Box for future use -->
 
 
         <!-- <div class="row">
->>>>>>> 06228ac28779e80803ce5f10b20a1f960ff8859e
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
@@ -140,9 +136,12 @@
                             <button type="submit" id="login" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
+
                 </div>
             </div>
-        </div>
+
+        </div> -->
+
     </div>
 
 
