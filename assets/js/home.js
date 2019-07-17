@@ -18,20 +18,16 @@ var database = firebase.database();
 function highlights()
 {
   var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4346";
-
-  d3.json(queryURL, function (data)
-  {
-   
-    
-    console.log(data.data);
-
-    // for(i=0;i<data.data.length; i++){
-    //     $(".matches").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
-    //     " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
-    //   console.log(data.data[i].teams);
-    //   console.log(data.data[i].sites[0].odds.h2h);
-      
-    // };
+  console.log(queryURL);
+  // Perfoming an AJAX GET request to our queryURL
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  })
+  .then(function (response) {
+    // Storing an array of results in the results variable
+    var results = response.data;
+  console.log(response);
   })
 }
 highlights();
@@ -87,4 +83,4 @@ function importData()
   })
 }
 
-// importData();
+importData();
