@@ -17,6 +17,8 @@ var database = firebase.database();
 
 function highlights() {
   var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4346";
+  // NFL ID = 4391
+  // MLS ID = 4346
 
   $.ajax({
     url: queryURL,
@@ -28,10 +30,15 @@ function highlights() {
       // Storing an array of results in the results variable
       console.log(response);
       console.log(response.events[0].strVideo);
-      for (i = 0; i<response.events.length; i++) {
-        console.log(response.events[i].strVideo);
-        $("#highlights").append("<div class='well'><th class='teams'> " + response.events[i].strVideo +
-        " </div>");
+      for (i = 0; i < response.events.length; i++) {
+
+        var highlight = response.events[i].strVideo;
+        console.log(highlight);
+        if (highlight !== null && highlight !== "") {
+          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo +"'>"
+            + response.events[i].strVideo + "</a></div>");
+        }
+
       }
     });
 }
