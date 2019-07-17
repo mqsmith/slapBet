@@ -1,14 +1,4 @@
-var config = {
-    apiKey: "AIzaSyDb61eAKxoJbSt9g6NjdhSe2wa9xd4nSr0",
-    authDomain: "slapbet-ecc3b.firebaseapp.com",
-    databaseURL: "https://slapbet-ecc3b.firebaseio.com",
-    projectId: "slapbet-ecc3b",
-    storageBucket: "",
-    messagingSenderId: "651388190757",
-    appId: "1:651388190757:web:ec6bfb4ea34fa69b"
-};
-// Initialize Firebase
-firebase.initializeApp(config);
+
 
 
 console.log("Contact Page");
@@ -19,39 +9,36 @@ $("#submit").on("click", function (event) {
     console.log("click");
 
     // Grabs user input
-    var userName = $("#inputEmail1").val().trim();
+    var userName = $("#email").val().trim();
     // var contactMethod = $("#").val().trim();
-    var messages = ($("#message").val().trim());
+    var messages = ($("#comment").val().trim());
 
-
-    // // Creates local "temporary" object for holding employee data
-    // var newUser = {
-    //     name: userName,
-    //     contact: contactMethod,
-    //     message: messages
-    // };
-
-    // Uploads employee data to the database
-    // database.ref().push(newUser);
-
-    // Logs everything to console
     console.log(userName);
-    // console.log(contactMethod);
     console.log(messages);
 
 
 
 
-    // Clears all of the text-boxes
-    $("#inputEmail1").val("");
-    $("#role-input").val("");
-    $("#message").val("");
+    // Creates local "temporary" object for holding user data
+    var newUser = {
+        name: userName,
+        message: messages
+    };
+
+
+    console.log(newUser);
+
+
+
+
+    // // Clears all of the text-boxes
+    // $("#inputEmail1").val("test");
+
+    // $("#message").val("test");
 
 });
 
-$('.contactMethod').on('change', function () {
-    alert($('input[name=radioName]:checked', '.contactMethod').val());
-});
+
 
 
 // $(".contactMethod input").on("change", function () {
@@ -77,3 +64,4 @@ $('.contactMethod').on('change', function () {
 //     console.log(contactMethod);
 //     console.log(message);
 // });
+
