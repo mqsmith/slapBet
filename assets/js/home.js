@@ -18,24 +18,26 @@ var database = firebase.database();
 function highlights() {
   var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4346";
 
-  d3.json(queryURL, function (data) {
-
-
-    console.log(data.data);
-
-    // for(i=0;i<data.data.length; i++){
-    //     $(".matches").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
-    //     " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
-    //   console.log(data.data[i].teams);
-    //   console.log(data.data[i].sites[0].odds.h2h);
-
-    // };
+  $.ajax({
+    url: queryURL,
+    method: "GET"
   })
+
+    // After the data from the AJAX request comes back
+    .then(function (response) {
+      // Storing an array of results in the results variable
+      console.log(response);
+      console.log(response.events[0].strVideo);
+      for (i = 0; i<response.events.length; i++) {
+        console.log(response.events[i].strVideo);
+        $("#highlights").append("<div class='well'><th class='teams'> " + response.events[i].strVideo +
+        " </div>");
+      }
+    });
 }
 highlights();
 
-// $("#highlights").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
-//         " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
+
 
 
 $("#login").on("click", function (event) {
