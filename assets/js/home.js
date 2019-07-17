@@ -15,7 +15,7 @@ var database = firebase.database();
 
 // API Call for highlight videos
 
-function highlights() {
+function soccerHighlights() {
   var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4346";
   // NFL ID = 4391
   // MLS ID = 4346
@@ -42,7 +42,34 @@ function highlights() {
       }
     });
 }
-highlights();
+
+function nflHighlights() {
+  var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4391";
+  // NFL ID = 4391
+  // MLS ID = 4346
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+    // After the data from the AJAX request comes back
+    .then(function (response) {
+      // Storing an array of results in the results variable
+      console.log(response);
+      console.log(response.events[0].strVideo);
+      for (i = 0; i < response.events.length; i++) {
+
+        var highlight = response.events[i].strVideo;
+        console.log(highlight);
+        if (highlight !== null && highlight !== "") {
+          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo +"'>"
+            + response.events[i].strVideo + "</a></div>");
+        }
+
+      }
+    });
+}
 
 
 
@@ -112,10 +139,14 @@ function importFootballData() {
 
 $(".dropdown-menu").on("click", "#mls-button", function () {
   $(".matches").empty();
+  $("#highlights").empty();
   importSoccerData();
+  soccerHighlights();
 });
 
 $(".dropdown-menu").on("click", "#nfl-button", function () {
   $(".matches").empty();
+  $("#highlights").empty();
   importFootballData();
+  nflHighlights();
 });
