@@ -18,6 +18,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 </head>
 
 <body>
@@ -55,57 +56,87 @@
 
     <!-- --------- Content Below ------------- -->
     <div class="container">
-        <form>
-            <div class="form-row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputBet">Bet Name</label>
-                        <input type="name" class="form-control" id="exampleInputBet" aria-describedby="betHelp"
-                            placeholder="Enter Bet Name">
+        <div class="card" id="bet">
+            <div class="card-header">
+                <h5>Place Your Bets!</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInputBet">Bet Name</label>
+                                <input type="name" class="form-control" id="exampleInputBet" aria-describedby="betHelp"
+                                    placeholder="Enter Bet Name">
 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFriends">Add Friends</label>
+                                <input type="username" class="form-control" id="exampleInputFriends"
+                                    placeholder="Enter Username">
+                               
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleFormChat">CHAT</label>
+                                <textarea class="form-control" id="exampleFormChat" rows="6"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="send-chat">Send</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputFriends">Add Friends</label>
-                        <input type="username" class="form-control" id="exampleInputFriends"
-                            placeholder="Enter Username">
-                        <button type="submit" class="btn btn-primary" id="add-friend-button">Add Friend</button>
+
+                    <div class="form-row">
+
+                            <div class="form-group">
+                                    <label for="exampleBet">What is your bet?</label>
+                                    <input type="username" class="form-control" id="exampleBet"
+                                        placeholder="Text Here">
+                                   
+                                </div>
+
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Number of SLAPS</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleFormChat">CHAT</label>
-                        <textarea class="form-control" id="exampleFormChat" rows="6"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="send-chat">Send</button>
-                </div>
+                    <button type="submit" class="btn btn-primary" id="create-bet-button">Create SLAPBET</button>
+                </form>
             </div>
 
-            <div class="form-row">
-                <!-- This div will need to take info from API to find avaible games to bet on -->
-                <div class="col-3">
-                    <label for="inputState">What Game Are You Betting ON?</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
+        </div>
 
-
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Number of SLAPS</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
+        <div>
+            <div id="bets-here" class="card card-default">
+                <div class="card-header">
+                    <h5>Active Bets</h5>
                 </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bet Name</th>
+                            <th scope="col">Who's In</th>
+                            <th scope="col">What's the Bet</th>
+                            <th scope="col">Slaps at Stake</th>
+                        </tr>
+                    </thead>
+                    <tbody class="slaps">
+
+                    </tbody>
+                </table>
             </div>
-            <button type="submit" class="btn btn-primary" id="create-bet-button">Create SLAPBET</button>
-        </form>
+        </div>
+
+
     </div>
 
 
