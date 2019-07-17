@@ -25,11 +25,18 @@ $("#login").on("click", function (event) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // ...
+        
     });
     $("#exampleInputEmail1").val("");
     $("#exampleInputPassword1").val("");
+    writeUserData(email, password);
 });
 
-
+function writeUserData(email, password) {
+    database.ref('users/').push({
+      username: email,
+      password: password,
+    //   UID: User UID,
+    });
+  }
 
