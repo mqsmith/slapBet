@@ -36,7 +36,7 @@ function soccerHighlights() {
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
           $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo +"'>"
-            + response.events[i].strVideo + "</a></div>");
+            + response.events[i].strEvent + "</a></div>");
         }
 
       }
@@ -64,7 +64,7 @@ function nflHighlights() {
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
           $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo +"'>"
-            + response.events[i].strVideo + "</a></div>");
+            + response.events[i].strEvent + "</a></div>");
         }
 
       }
