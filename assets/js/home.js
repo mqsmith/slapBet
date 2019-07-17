@@ -1,4 +1,4 @@
-console.log("Home Page");
+
 var firebaseConfig = {
     apiKey: "AIzaSyDb61eAKxoJbSt9g6NjdhSe2wa9xd4nSr0",
     authDomain: "slapbet-ecc3b.firebaseapp.com",
@@ -40,3 +40,26 @@ function writeUserData(email, password) {
     });
   }
 
+// *** D3 API CALL ***
+function importData()
+{
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
+
+  d3.json(queryURL, function (data)
+  {
+    var gameBetween=data.data[0].teams;
+    var h2hArray=data.data[0].sites[0].odds.h2h;
+    
+    console.log(data.data);
+
+    for(i=0;i<data.data.length; i++){
+        $(".matches").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
+        " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
+      console.log(data.data[i].teams);
+      console.log(data.data[i].sites[0].odds.h2h);
+      
+    };
+  })
+}
+
+importData();
