@@ -54,27 +54,22 @@ $("#create-bet-button").on("click", function (event) {
         var message = 'Please Enter a valid email address.';
         $('#alertModal').find('.modal-body p').text(message);
         $('#alertModal').modal('show');
-        event.preventDefault();
+        
     }
     if (validateEmail(addFriends)) {
         var message = 'Valid Email!';
         $('#alertModal').find('.modal-body p').text(message);
         $('#alertModal').modal('show');
+        pushData();
     }
     else {
         var message = 'Please Enter a valid email address.';
         $('#alertModal').find('.modal-body p').text(message);
         $('#alertModal').modal('show');
-        event.preventDefault();
+        
     }
 
-    database.ref('bets/').push({
-        Name: betName,
-        Friends: addFriends,
-        Bet: gameBet,
-        Wager: numberOfSlaps,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
+   
 
     $("#exampleInputBet").val("");
     $("#exampleInputFriends").val("");
@@ -90,4 +85,14 @@ function validateEmail(sEmail) {
     else {
         return false;
     }
+}
+
+function pushData(){
+    database.ref('bets/').push({
+        Name: betName,
+        Friends: addFriends,
+        Bet: gameBet,
+        Wager: numberOfSlaps,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
 }
