@@ -28,8 +28,8 @@ database.ref('bets/').on("child_added", function makeDiv(snapshot) {
     console.log(snapshot.val().Bet);
     console.log(snapshot.val().Wager);
     // Change the HTML to reflect
-    $(".slaps").append("<tr class='well'><th class='betName'> " + snapshot.val().Name + " </th><td class='addFriends'> " + 
-        snapshot.val().Friends + " </td><td class='gameBet'> " + snapshot.val().Bet + "<td class='numberOfSlpas'> " + 
+    $(".slaps").append("<tr class='well'><th class='betName'> " + snapshot.val().Name + " </th><td class='addFriends'> " +
+        snapshot.val().Friends + " </td><td class='gameBet'> " + snapshot.val().Bet + "<td class='numberOfSlpas'> " +
         snapshot.val().Wager + " </td></tr>");
 
 
@@ -50,6 +50,23 @@ $("#create-bet-button").on("click", function (event) {
     console.log(gameBet);
     console.log(numberOfSlaps);
 
+    if ($.trim(addFriends).length == 0) {
+        var message = 'Please Enter a valid email address.';
+        $('#alertModal').find('.modal-body p').text(message);
+        $('#alertModal').modal('show');
+        event.preventDefault();
+    }
+    if (validateEmail(addFriends)) {
+        var message = 'Valid Email!';
+        $('#alertModal').find('.modal-body p').text(message);
+        $('#alertModal').modal('show');
+    }
+    else {
+        var message = 'Please Enter a valid email address.';
+        $('#alertModal').find('.modal-body p').text(message);
+        $('#alertModal').modal('show');
+        event.preventDefault();
+    }
 
     database.ref('bets/').push({
         Name: betName,
@@ -64,3 +81,13 @@ $("#create-bet-button").on("click", function (event) {
     $("#exampleBet").val("");
     $("#exampleFormControlSelect1").val("1");
 });
+
+function validateEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
