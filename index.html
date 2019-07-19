@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/styles/reset.css">
     <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css"
+        integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -32,6 +34,8 @@
     <!-- D3 links -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-request.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"
+        integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -42,7 +46,7 @@
 
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        
+
         <img src="./assets/images/slapLogo.jpg" class="mr-3" alt="SlapBetLogo">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +65,7 @@
                     <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
             </ul>
-           
+
         </div>
     </nav>
 
@@ -105,6 +109,12 @@
                     <div class="card-header">
                         Game Highlights
                     </div>
+                    <div class="row">
+                            <!-- <div class="col-md-6"> -->
+                                <canvas class="chart" id="myChart" width="100" height="100"></canvas>
+                            <!-- </div> -->
+                
+                        </div>
                     <div class="card-body" id="highlights">
 
                     </div>
@@ -112,6 +122,13 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas class="chart" id="myChart" width="100" height="100"></canvas>
+            </div>
+
+        </div>
+
 
         <!-- Login Box for future use -->
 
