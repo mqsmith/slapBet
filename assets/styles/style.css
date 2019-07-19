@@ -8,11 +8,12 @@
     margin-top: 20px;
 }
 
-img{
-    height: 64px;
-    width: 64px;
+#slapgif{
+    height: 100px;
+    width: 100px;
 }
 
+<<<<<<< HEAD
 #appName{
     font-family: 'Geostar', cursive;
     color: rgb(164, 21, 21);
@@ -20,3 +21,9 @@ img{
     font-size: 100px;
 
 }
+=======
+.jumbotron{
+    background-color: url("/assets/images/sportsimages/Header.jpg");
+    background-size: cover;
+}
+>>>>>>> 02627dc467d038a3b011b1edb628bf5c19b82c56
