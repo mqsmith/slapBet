@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Create Your Bet</title>
+    <title>Bet Slip</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/styles/reset.css">
@@ -19,6 +19,9 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -41,7 +44,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="bet.html">Create Your Bet <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="bet.html">Bet Slip <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact Us</a>
@@ -56,7 +59,7 @@
     <div class="container">
         <div class="card" id="bet">
             <div class="card-header">
-                <h5>Place Your Bets!</h5>
+                <h5>Bet Slip</h5>
             </div>
             <div class="card-body">
                 <form>
@@ -71,7 +74,7 @@
                             <div class="form-group">
                                 <label for="exampleInputFriends">Add Friends</label>
                                 <input type="username" class="form-control" id="exampleInputFriends"
-                                    placeholder="Enter Username">
+                                    placeholder="Enter Email Address">
 
                             </div>
                         </div>
@@ -99,9 +102,9 @@
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option>1</option>
                                     <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
                                     <option>5</option>
+                                    <option>10</option>
+                                    <option>100</option>
                                 </select>
                             </div>
                         </div>
@@ -112,10 +115,30 @@
 
         </div>
 
+        <!-- Modal -->
+        <div id="alertModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
         <div>
             <div id="bets-here" class="card card-default">
                 <div class="card-header">
-                    <h5>Active Bets</h5>
+                    <h5>My Bets</h5>
                 </div>
                 <table class="table">
                     <thead>
