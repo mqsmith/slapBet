@@ -13,7 +13,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/styles/reset.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css"
+        integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Geostar&display=swap" rel="stylesheet">
+=======
 
+>>>>>>> 02627dc467d038a3b011b1edb628bf5c19b82c56
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
@@ -33,6 +40,17 @@
     <!-- D3 links -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-request.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"
+        integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+
+    <style>
+    html, body{
+            background-image: url(assets/images/sportsimages/contact.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+        
 </head>
 
 <body>
@@ -44,7 +62,11 @@
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
+<<<<<<< HEAD
+        <img src="./assets/images/slapLogo.jpg" class="mr-3" alt="SlapBetLogo">
+=======
         <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
+>>>>>>> 02627dc467d038a3b011b1edb628bf5c19b82c56
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -64,6 +86,7 @@
             </ul>
 
         </div>
+        <h3 id="appName">SLAP BET</h3>
     </nav>
   
     <!-- --------- Content Below ------------- -->
@@ -106,6 +129,12 @@
                     <div class="card-header">
                         Game Highlights
                     </div>
+                    <div class="row">
+                        <!-- <div class="col-md-6"> -->
+                        <canvas class="chart" id="myChart" width="100" height="100"></canvas>
+                        <!-- </div> -->
+
+                    </div>
                     <div class="card-body" id="highlights">
 
                     </div>
@@ -113,6 +142,13 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas class="chart" id="myChart" width="100" height="100"></canvas>
+            </div>
+
+        </div>
+
 
         <!-- Login Box for future use -->
 
