@@ -1,3 +1,5 @@
+
+
 #mainContainer, #bet{
     margin-top: 20px;
 }
@@ -9,4 +11,12 @@
 img{
     height: 64px;
     width: 64px;
+}
+
+#appName{
+    font-family: 'Geostar', cursive;
+    color: rgb(164, 21, 21);
+    font-weight: bold;
+    font-size: 100px;
+
 }
