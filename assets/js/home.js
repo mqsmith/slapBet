@@ -1,4 +1,5 @@
-
+var chartTeams = [];
+var chartOdds = [];
 var firebaseConfig = {
   apiKey: "AIzaSyDb61eAKxoJbSt9g6NjdhSe2wa9xd4nSr0",
   authDomain: "slapbet-ecc3b.firebaseapp.com",
@@ -109,21 +110,18 @@ function importSoccerData() {
 
     console.log(data.data);
 
+
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' id='" + i + "'><th id='teams"+i+"'>"  + data.data[i].teams +
-        " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
-      console.log(data.data[i].teams);
-      console.log(data.data[i].sites[0].odds.h2h);
-      
-      var gameBetween = data.data[i].teams;
-      var h2hArray = data.data[i].sites[0].odds.h2h;
-      console.log(gameBetween);
-      console.log(h2hArray);
-      chart(gameBetween, h2hArray);
+      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
+      + "<td odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      // console.log(data.data[i].teams);
+      // console.log(data.data[i].sites[0].odds.h2h);
       
     };
   })
 }
+
+
 
 
 
@@ -134,14 +132,15 @@ function importFootballData() {
   d3.json(queryURL, function (data) {
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well'><th class='teams'" + i +">" + data.data[i].teams +
-        " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
-      console.log(data.data[i].teams);
+      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
+        + "<td odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      console.log(data.data[i].teams[0]);
+      console.log(data.data[i].teams[1]);
       console.log(data.data[i].sites[0].odds.h2h);
       var gameBetween = data.data[i].teams;
       var h2hArray = data.data[i].sites[0].odds.h2h;
-      chart(gameBetween, h2hArray);
-      
+   
+
 
     };
   })
@@ -152,7 +151,8 @@ $(".dropdown-menu").on("click", "#mls-button", function () {
   $("#highlights").empty();
   importSoccerData();
   soccerHighlights();
- 
+
+
 });
 
 $(".dropdown-menu").on("click", "#nfl-button", function () {
@@ -162,15 +162,37 @@ $(".dropdown-menu").on("click", "#nfl-button", function () {
   nflHighlights();
 });
 
-function chart(gameBetween, h2hArray) {
+
+$(document).on("mouseover", ".well", function(){
+  // homeTeam = $(".homeTeam").text();
+  // awayTeam = $(".awayTeam").text();
+  console.log("======================");
+  console.log("New mouseover:");
+  console.log(this);
+  chartOdds = $(this).attr("data-state");
+  names = $(this).attr("id");
+  console.log(names);
+  console.log(names.split(','));
+  names = names.split(',');
+  names.push("Draw");
+  chartTeams = names
+  console.log(chartTeams);
+  console.log(chartOdds);
+  chart(chartTeams, chartOdds);
+})
+
+
+
+
+function chart(chartTeams, chartOdds) {
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: gameBetween,
+      labels: chartTeams,
       datasets: [{
-        label: 'H2H Odds',
-        data: h2hArray,
+        label: "",
+        data: chartOdds.split(','),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -191,6 +213,12 @@ function chart(gameBetween, h2hArray) {
       }]
     },
     options: {
+      legend:{
+        display: false
+        },
+      tooltips:{
+          enabled:false
+        },
       scales: {
         yAxes: [{
           ticks: {
