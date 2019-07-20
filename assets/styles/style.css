@@ -1,12 +1,42 @@
+html,
+body {
+    background-image: url(../images/index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #mainContainer, #bet{
     margin-top: 20px;
 }
 
+.navbar{
+    background-color: rgb(182, 182, 182);
+}
+
+.card{
+    opacity: .9;
+}
+
 #bets-here{
     margin-top: 20px;
+    color: black;
 }
 
 #slapgif{
     height: 100px;
     width: 100px;
 }
+
+#appName{
+    font-family: 'Geostar', cursive;
+    color: rgb(164, 21, 21);
+    font-weight: bold;
+    font-size: 100px;
+
+}
+.jumbotron{
+    background-color: url("/assets/images/sportsimages/Header.jpg");
+    background-size: cover;
+}
+
+
