@@ -1,11 +1,25 @@
-
+html,
+body {
+    background-image: url(../images/index.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 #mainContainer, #bet{
     margin-top: 20px;
 }
 
+.navbar{
+    background-color: rgb(182, 182, 182);
+}
+
+.card{
+    opacity: .9;
+}
+
 #bets-here{
     margin-top: 20px;
+    color: black;
 }
 
 #slapgif{
@@ -24,3 +38,5 @@
     background-color: url("/assets/images/sportsimages/Header.jpg");
     background-size: cover;
 }
+
+
