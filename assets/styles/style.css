@@ -17,6 +17,18 @@ body {
     opacity: .9;
 }
 
+.home{
+color: rgba(255, 99, 132);
+font-weight: bold;
+}
+
+.away{
+   color: rgba(54, 162, 235);
+   font-weight: bold;
+}
+
+
+
 #bets-here{
     margin-top: 20px;
     color: black;
