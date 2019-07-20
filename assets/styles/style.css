@@ -19,10 +19,12 @@ body {
 
 .home{
 color: rgba(255, 99, 132);
+font-weight: bold;
 }
 
 .away{
    color: rgba(54, 162, 235);
+   font-weight: bold;
 }
 
 
