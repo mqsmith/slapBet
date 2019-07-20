@@ -65,7 +65,6 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -78,49 +77,44 @@
                     <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
             </ul>
-
-            </form>
         </div>
         <h3 id="appName">SLAP BET</h3>
     </nav>
 
-    <!-- --------- Content Below ------------- -->
+    <!-- MAIN CONTENT OF THE PAGE -->
     <div class="container">
         <div class="card" id="bet">
             <div class="card-header">
                 <h5>Bet Slip</h5>
             </div>
             <div class="card-body">
+                <!-- Form where user inputs bet information -->
                 <form>
                     <div class="form-row">
                         <div class="col-6">
                             <div class="form-group">
+                                <!-- Labeling the bet -->
                                 <label for="exampleInputBet">Bet Name</label>
                                 <input type="name" class="form-control" id="exampleInputBet" aria-describedby="betHelp"
                                     placeholder="Enter Bet Name">
-
                             </div>
                             <div class="form-group">
+                                <!-- Adding other users -->
                                 <label for="exampleInputFriends">Add Friends</label>
                                 <input type="username" class="form-control" id="exampleInputFriends"
                                     placeholder="Enter Email Address">
-
                             </div>
                         </div>
-                        
                     </div>
-
                     <div class="form-row">
-
                         <div class="form-group">
+                            <!-- The game being bet on -->
                             <label for="exampleBet">What is your bet?</label>
                             <input type="username" class="form-control" id="exampleBet" placeholder="Text Here">
-
                         </div>
-
-
                         <div class="col-3">
                             <div class="form-group">
+                                <!-- Picking number of slaps -->
                                 <label for="exampleFormControlSelect1">Number of SLAPS</label>
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option>1</option>
@@ -132,10 +126,10 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Button to create a bet -->
                     <button type="submit" class="btn btn-dark" id="create-bet-button">SLAPBET</button>
                 </form>
             </div>
-
         </div>
 
         <!-- Modal -->
@@ -150,19 +144,17 @@
                         <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal">
-                            Close</button>
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
-
         <div>
             <div id="bets-here" class="card card-default">
                 <div class="card-header">
                     <h5>My Bets</h5>
                 </div>
+                <!-- Table where bets are displayed -->
                 <table class="table card-body">
                     <thead>
                         <tr>
@@ -172,17 +164,13 @@
                             <th scope="col"><h6>Slaps at Stake</h6></th>
                         </tr>
                     </thead>
-                    <tbody class="slaps">
-
-                    </tbody>
+                    <tbody class="slaps"></tbody>
                 </table>
             </div>
         </div>
-
-
     </div>
 
-
+    <!-- bet.js Link -->
     <script src="assets/js/bet.js"></script>
 </body>
 
