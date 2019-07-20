@@ -112,8 +112,8 @@ function importSoccerData() {
 
 
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
-      + "<td odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td class='home' home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td class='away' away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
+      + "<td class='odds' odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
       // console.log(data.data[i].teams);
       // console.log(data.data[i].sites[0].odds.h2h);
       
@@ -132,8 +132,8 @@ function importFootballData() {
   d3.json(queryURL, function (data) {
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
-        + "<td odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td class='home' home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td class='away' away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
+      + "<td class='odds' odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
       console.log(data.data[i].teams[0]);
       console.log(data.data[i].teams[1]);
       console.log(data.data[i].sites[0].odds.h2h);
