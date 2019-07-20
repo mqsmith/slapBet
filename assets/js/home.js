@@ -75,30 +75,30 @@ function nflHighlights() {
 
 
 
-$("#login").on("click", function (event) {
-  event.preventDefault();
-  var email = $("#exampleInputEmail1").val().trim();
-  var password = $("#exampleInputPassword1").val().trim();
-  console.log(email);
-  console.log(password);
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+// $("#login").on("click", function (event) {
+//   event.preventDefault();
+//   var email = $("#exampleInputEmail1").val().trim();
+//   var password = $("#exampleInputPassword1").val().trim();
+//   console.log(email);
+//   console.log(password);
+//   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+//     // Handle Errors here.
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
 
-  });
-  $("#exampleInputEmail1").val("");
-  $("#exampleInputPassword1").val("");
-  writeUserData(email, password);
-});
+//   });
+//   $("#exampleInputEmail1").val("");
+//   $("#exampleInputPassword1").val("");
+//   writeUserData(email, password);
+// });
 
-function writeUserData(email, password) {
-  database.ref('users/').push({
-    username: email,
-    password: password,
-    //   UID: User UID,
-  });
-}
+// function writeUserData(email, password) {
+//   database.ref('users/').push({
+//     username: email,
+//     password: password,
+//     //   UID: User UID,
+//   });
+// }
 
 // *** D3 API CALL ***
 function importSoccerData() {
