@@ -12,37 +12,46 @@
     <title>SLAP Bet</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Reset CSS -->
     <link rel="stylesheet" href="assets/styles/reset.css">
+
+    <!-- style.css link -->
     <link rel="stylesheet" href="assets/styles/style.css">
+
+    <!-- Chart.JS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css"
         integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+
+    <!-- Google Font Link -->
     <link href="https://fonts.googleapis.com/css?family=Geostar&display=swap" rel="stylesheet">
 
+    <!-- JQuery Link -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- Firebase Link -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- Bootstrap Links -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/styles/style.css">
-
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <!-- D3 links -->
+
+    <!-- D3 Links -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-request.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"
         integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
 
-    <style>
-       
 
+    <!-- Style unique to index.html -->
+    <style>
         table {
             color: white;
         }
@@ -64,13 +73,11 @@
 
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg">
-
         <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -87,13 +94,13 @@
         </div>
         <h3 id="appName">SLAP BET</h3>
     </nav>
-    <!-- --------- Content Below ------------- -->
 
-
+    <!-- MAIN CONTENT OF THE PAGE -->
     <div class="container" id="mainContainer">
         <div class="row">
             <div class="col-lg-6">
                 <div class="dropdown">
+                    <!-- Dropdown button for picking a League -->
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pick a League
@@ -104,8 +111,8 @@
                     </div>
                 </div>
 
+                <!-- Table where Teams and H2H odds are displayed -->
                 <table class="table table-hover">
-
                     <thead>
                         <tr>
                             <h5></h5>
@@ -117,77 +124,34 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="matches">
-
-                    </tbody>
+                    <tbody class="matches"></tbody>
                 </table>
             </div>
+
+            <!-- Game Highlights -->
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         Game Highlights
                     </div>
                     <div class="row">
-                        <!-- <div class="col-md-6"> -->
                         <canvas class="chart" id="myChart" width="100" height="100"></canvas>
-                        <!-- </div> -->
-
                     </div>
-                    <div class="card-body" id="highlights">
-
-                    </div>
+                    <div class="card-body" id="highlights"></div>
                 </div>
             </div>
-
         </div>
+
+        <!-- Graphs are displayed here -->
         <div class="row">
             <div class="col-md-6">
                 <canvas class="chart" id="myChart" width="100" height="100"></canvas>
             </div>
 
         </div>
-
-
-        <!-- Login Box for future use -->
-
-
-        <!-- <div class="row">
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        Login
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
-                                    anyone
-                                    else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Password">
-                            </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" id="login" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-
-        </div> -->
-
     </div>
 
-
+    <!-- home.js Link -->
     <script src="assets/js/home.js"></script>
 </body>
 

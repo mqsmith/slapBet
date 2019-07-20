@@ -12,28 +12,55 @@
     <title>Contact Us</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Reset CSS -->
     <link rel="stylesheet" href="assets/styles/reset.css">
+
+    <!-- style.css link -->
     <link rel="stylesheet" href="assets/styles/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Chart.JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css"
+        integrity="sha256-IvM9nJf/b5l2RoebiFno92E5ONttVyaEEsdemDC6iQA=" crossorigin="anonymous" />
+
+    <!-- Google Font Link -->
     <link href="https://fonts.googleapis.com/css?family=Geostar&display=swap" rel="stylesheet">
+
+    <!-- JQuery Link -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- Bootstrap Links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- D3 Links -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/d3-request.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"
+        integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+
 
 </head>
 
 <body>
 
 
-
+    <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg">
-
         <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -46,14 +73,11 @@
                     <a class="nav-link" href="contact.html">Contact Us <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
-
-
-            </form>
         </div>
         <h3 id="appName">SLAP BET</h3>
     </nav>
 
-
+    <!-- MAIN CONTENT OF THE PAGE -->
     <div class=container>
         <div class="card" id="bet">
             <div class="card-header">
@@ -62,7 +86,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-
+                        <!-- Form to send an email slapbetinfo@gmail.com -->
                         <form method="POST" action="https://formspree.io/slapbetinfo@gmail.com">
                             <br>
                             <div class="form-group">
@@ -79,9 +103,11 @@
                             <button type="submit" class="btn btn-dark">Contact Us</button>
                         </form>
                     </div>
-                    </form>
+                    
                 </div>
             </div>
+
+            <!-- contact.js Link -->
             <script src="assets/js/contact.js"></script>
 
 </body>
