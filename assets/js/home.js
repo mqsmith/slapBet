@@ -1,6 +1,7 @@
 // Global variables
 var chartTeams = [];
 var chartOdds = [];
+var emptyArray = [];
 
 // Firebase variable
 var firebaseConfig = {
@@ -80,7 +81,7 @@ function nflHighlights() {
 // *** API Calls using D3 ***
 // Function creating MLS odds data
 function importSoccerData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
   d3.json(queryURL, function (data) {
     var gameBetween = data.data[0].teams;
     var h2hArray = data.data[0].sites[0].odds.h2h;
@@ -97,7 +98,7 @@ function importSoccerData() {
 
 // Function creating NFL odds data
 function importFootballData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
   d3.json(queryURL, function (data) {
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
@@ -142,13 +143,31 @@ $(document).on("mouseover", ".well", function () {
   names = names.split(',');
   names.push("Draw");
   chartTeams = names
-  console.log(chartTeams);
+  var percentage = chartOdds.split(',');
+  console.log(percentage);
+
+  percentage.forEach(function (element) {
+    newvar = parseFloat(element);
+    console.log(newvar);
+    percentage.push(newvar)
+    console.log(percentage);
+  });
+  console.log(percentage);
+  percentage.splice(0, 3);
+  console.log(percentage);
   console.log(chartOdds);
-  chart(chartTeams, chartOdds);
+  for (i = 0; i < percentage.length; i++) {
+    chartOdds = (Math.floor((1 / percentage[i]) * 100));
+    emptyArray.push(chartOdds);
+    console.log(emptyArray);
+
+  }
+  
+  chart(chartTeams, emptyArray);
 })
 
 // Function using Chart.js
-function chart(chartTeams, chartOdds) {
+function chart(chartTeams, emptyArray) {
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -156,7 +175,7 @@ function chart(chartTeams, chartOdds) {
       labels: chartTeams,
       datasets: [{
         label: "",
-        data: chartOdds.split(','),
+        data: emptyArray,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
