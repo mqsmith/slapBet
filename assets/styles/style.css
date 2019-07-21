@@ -23,7 +23,7 @@ font-weight: bold;
 }
 
 .away{
-   color: rgba(54, 162, 235);
+   color: rgba(75, 148, 196);
    font-weight: bold;
 }
 
@@ -39,7 +39,7 @@ font-weight: bold;
 
 #appName{
     font-family: 'Geostar', cursive;
-    color: rgb(164, 21, 21);
+    color: rgb(130,224,100);
     font-weight: bold;
     font-size: 100px;
 

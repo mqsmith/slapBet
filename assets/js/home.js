@@ -32,12 +32,15 @@ function soccerHighlights() {
       console.log(response);
       console.log(response.events[0].strVideo);
       for (i = 0; i < response.events.length; i++) {
-
         var highlight = response.events[i].strVideo;
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'>"
-            + response.events[i].strEvent + "</a></div>");
+          var stringHighlight = String(highlight);
+          var splitHighlight = stringHighlight.substr(32, 11);
+          console.log(splitHighlight);
+          console.log(thumbnail);
+          var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
+          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'><img src='" + thumbnail + "'></a></div>");
         }
       }
     });
@@ -62,8 +65,12 @@ function nflHighlights() {
         var highlight = response.events[i].strVideo;
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'>"
-            + response.events[i].strEvent + "</a></div>");
+          var stringHighlight = String(highlight);
+          var splitHighlight = stringHighlight.substr(32, 11);
+          console.log(splitHighlight);
+          console.log(thumbnail);
+          var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
+          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'><img src='" + thumbnail + "'></a></div>");
         }
 
       }
@@ -79,11 +86,11 @@ function importSoccerData() {
     var h2hArray = data.data[0].sites[0].odds.h2h;
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td class='home' home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td class='away' away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
-      + "<td class='odds' odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='" + data.data[i].sites[0].odds.h2h + "'id='" + data.data[i].teams + "'>" + "<td class='home' home='" + data.data[i].teams[0] + "'>" + data.data[i].teams[0] + "</td>" + "<td class='away' away='" + data.data[i].teams[1] + "'>" + data.data[i].teams[1] + "</td>"
+        + "<td class='odds' odds-data='" + data.data[i].sites[0].odds.h2h + "'>" + data.data[i].sites[0].odds.h2h);
       // console.log(data.data[i].teams);
       // console.log(data.data[i].sites[0].odds.h2h);
-      
+
     };
   })
 }
@@ -94,8 +101,8 @@ function importFootballData() {
   d3.json(queryURL, function (data) {
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td class='home' home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td class='away' away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
-      + "<td class='odds' odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='" + data.data[i].sites[0].odds.h2h + "'id='" + data.data[i].teams + "'>" + "<td class='home' home='" + data.data[i].teams[0] + "'>" + data.data[i].teams[0] + "</td>" + "<td class='away' away='" + data.data[i].teams[1] + "'>" + data.data[i].teams[1] + "</td>"
+        + "<td class='odds' odds-data='" + data.data[i].sites[0].odds.h2h + "'>" + data.data[i].sites[0].odds.h2h);
       console.log(data.data[i].teams[0]);
       console.log(data.data[i].teams[1]);
       console.log(data.data[i].sites[0].odds.h2h);
@@ -122,7 +129,7 @@ $(".dropdown-menu").on("click", "#nfl-button", function () {
 });
 
 // Event listener to get data from API calls
-$(document).on("mouseover", ".well", function(){
+$(document).on("mouseover", ".well", function () {
   // homeTeam = $(".homeTeam").text();
   // awayTeam = $(".awayTeam").text();
   console.log("======================");
@@ -170,12 +177,12 @@ function chart(chartTeams, chartOdds) {
       }]
     },
     options: {
-      legend:{
+      legend: {
         display: false
-        },
-      tooltips:{
-          enabled:false
-        },
+      },
+      tooltips: {
+        enabled: false
+      },
       scales: {
         yAxes: [{
           ticks: {
