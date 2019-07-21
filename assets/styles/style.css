@@ -10,7 +10,7 @@ body {
 }
 
 .navbar{
-    background-color: rgb(182, 182, 182);
+    background-color: rgb(141, 138, 138);
 }
 
 .card{
@@ -46,5 +46,5 @@ font-weight: bold;
 }
 
 #thumb{
-    margin: 20px;
+    margin-top: 20px;
 }
