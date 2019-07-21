@@ -48,3 +48,7 @@ font-weight: bold;
 #thumb{
     margin-top: 20px;
 }
+
+.chart{
+    width: 75%;
+}

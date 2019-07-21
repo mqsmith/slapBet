@@ -156,6 +156,7 @@ $(document).on("mouseover", ".well", function () {
   percentage.splice(0, 3);
   console.log(percentage);
   console.log(chartOdds);
+  empty();
   for (i = 0; i < percentage.length; i++) {
     chartOdds = (Math.floor((1 / percentage[i]) * 100));
     emptyArray.push(chartOdds);
@@ -211,4 +212,9 @@ function chart(chartTeams, emptyArray) {
       }
     }
   });
+}
+
+function empty() {
+  //empty your array
+  emptyArray = [];
 }
