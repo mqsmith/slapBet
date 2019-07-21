@@ -40,7 +40,7 @@ function soccerHighlights() {
           console.log(splitHighlight);
           console.log(thumbnail);
           var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'><img src='" + thumbnail + "'></a></div>");
+          $("#highlights").append("<div class='highlight-url'id='thumb'><a href='" + response.events[i].strVideo + "'><img src='" + thumbnail + "'></a></div>");
         }
       }
     });
@@ -70,7 +70,7 @@ function nflHighlights() {
           console.log(splitHighlight);
           console.log(thumbnail);
           var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'><img src='" + thumbnail + "'></a></div>");
+          $("#highlights").append("<div class='highlight-url'id='thumb'><a href='" + response.events[i].strVideo + "'><img src='" + thumbnail + "'></a></div>");
         }
 
       }
