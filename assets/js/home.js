@@ -153,7 +153,12 @@ $(document).on("mouseover", ".well", function () {
     console.log(percentage);
   });
   console.log(percentage);
-  percentage.splice(0, 3);
+  console.log("---------------");
+  if (percentage.length === 6) {
+    percentage.splice(0, 3);
+  } else {
+    percentage.splice(0, 2);
+  };
   console.log(percentage);
   console.log(chartOdds);
   empty();
@@ -163,7 +168,7 @@ $(document).on("mouseover", ".well", function () {
     console.log(emptyArray);
 
   }
-  
+
   chart(chartTeams, emptyArray);
 })
 
