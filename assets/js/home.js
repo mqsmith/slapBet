@@ -1,6 +1,7 @@
 // Global variables
 var chartTeams = [];
 var chartOdds = [];
+var emptyArray = [];
 
 // Firebase variable
 var firebaseConfig = {
@@ -32,12 +33,15 @@ function soccerHighlights() {
       console.log(response);
       console.log(response.events[0].strVideo);
       for (i = 0; i < response.events.length; i++) {
-
         var highlight = response.events[i].strVideo;
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'>"
-            + response.events[i].strEvent + "</a></div>");
+          var stringHighlight = String(highlight);
+          var splitHighlight = stringHighlight.substr(32, 11);
+          console.log(splitHighlight);
+          console.log(thumbnail);
+          var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
+          $("#highlights").append("<div class='highlight-url'id='thumb'><a href='" + response.events[i].strVideo + "'target='_blank'><img src='" + thumbnail + "'></a></div>");
         }
       }
     });
@@ -62,8 +66,12 @@ function nflHighlights() {
         var highlight = response.events[i].strVideo;
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo + "'>"
-            + response.events[i].strEvent + "</a></div>");
+          var stringHighlight = String(highlight);
+          var splitHighlight = stringHighlight.substr(32, 11);
+          console.log(splitHighlight);
+          console.log(thumbnail);
+          var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
+          $("#highlights").append("<div class='highlight-url'id='thumb'><a href='" + response.events[i].strVideo + "'target='_blank'><img src='" + thumbnail + "'></a></div>");
         }
 
       }
@@ -73,29 +81,29 @@ function nflHighlights() {
 // *** API Calls using D3 ***
 // Function creating MLS odds data
 function importSoccerData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
   d3.json(queryURL, function (data) {
     var gameBetween = data.data[0].teams;
     var h2hArray = data.data[0].sites[0].odds.h2h;
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td class='home' home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td class='away' away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
-      + "<td class='odds' odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='" + data.data[i].sites[0].odds.h2h + "'id='" + data.data[i].teams + "'>" + "<td class='home' home='" + data.data[i].teams[0] + "'>" + data.data[i].teams[0] + "</td>" + "<td class='away' away='" + data.data[i].teams[1] + "'>" + data.data[i].teams[1] + "</td>"
+        + "<td class='odds' odds-data='" + data.data[i].sites[0].odds.h2h + "'>" + data.data[i].sites[0].odds.h2h);
       // console.log(data.data[i].teams);
       // console.log(data.data[i].sites[0].odds.h2h);
-      
+
     };
   })
 }
 
 // Function creating NFL odds data
 function importFootballData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
   d3.json(queryURL, function (data) {
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well' data-state='"+data.data[i].sites[0].odds.h2h+"'id='"+data.data[i].teams+"'>" + "<td class='home' home='"+ data.data[i].teams[0] +"'>" + data.data[i].teams[0] +"</td>" + "<td class='away' away='"+ data.data[i].teams[1] +"'>" + data.data[i].teams[1] + "</td>"
-      + "<td class='odds' odds-data='"+data.data[i].sites[0].odds.h2h+"'>" + data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='" + data.data[i].sites[0].odds.h2h + "'id='" + data.data[i].teams + "'>" + "<td class='home' home='" + data.data[i].teams[0] + "'>" + data.data[i].teams[0] + "</td>" + "<td class='away' away='" + data.data[i].teams[1] + "'>" + data.data[i].teams[1] + "</td>"
+        + "<td class='odds' odds-data='" + data.data[i].sites[0].odds.h2h + "'>" + data.data[i].sites[0].odds.h2h);
       console.log(data.data[i].teams[0]);
       console.log(data.data[i].teams[1]);
       console.log(data.data[i].sites[0].odds.h2h);
@@ -122,7 +130,7 @@ $(".dropdown-menu").on("click", "#nfl-button", function () {
 });
 
 // Event listener to get data from API calls
-$(document).on("mouseover", ".well", function(){
+$(document).on("mouseover", ".well", function () {
   // homeTeam = $(".homeTeam").text();
   // awayTeam = $(".awayTeam").text();
   console.log("======================");
@@ -135,13 +143,37 @@ $(document).on("mouseover", ".well", function(){
   names = names.split(',');
   names.push("Draw");
   chartTeams = names
-  console.log(chartTeams);
+  var percentage = chartOdds.split(',');
+  console.log(percentage);
+
+  percentage.forEach(function (element) {
+    newvar = parseFloat(element);
+    console.log(newvar);
+    percentage.push(newvar)
+    console.log(percentage);
+  });
+  console.log(percentage);
+  console.log("---------------");
+  if (percentage.length === 6) {
+    percentage.splice(0, 3);
+  } else {
+    percentage.splice(0, 2);
+  };
+  console.log(percentage);
   console.log(chartOdds);
-  chart(chartTeams, chartOdds);
+  empty();
+  for (i = 0; i < percentage.length; i++) {
+    chartOdds = (Math.floor((1 / percentage[i]) * 100));
+    emptyArray.push(chartOdds);
+    console.log(emptyArray);
+
+  }
+
+  chart(chartTeams, emptyArray);
 })
 
 // Function using Chart.js
-function chart(chartTeams, chartOdds) {
+function chart(chartTeams, emptyArray) {
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -149,7 +181,7 @@ function chart(chartTeams, chartOdds) {
       labels: chartTeams,
       datasets: [{
         label: "",
-        data: chartOdds.split(','),
+        data: emptyArray,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -170,12 +202,12 @@ function chart(chartTeams, chartOdds) {
       }]
     },
     options: {
-      legend:{
+      legend: {
         display: false
-        },
-      tooltips:{
-          enabled:false
-        },
+      },
+      tooltips: {
+        enabled: false
+      },
       scales: {
         yAxes: [{
           ticks: {
@@ -185,4 +217,9 @@ function chart(chartTeams, chartOdds) {
       }
     }
   });
+}
+
+function empty() {
+  //empty your array
+  emptyArray = [];
 }
