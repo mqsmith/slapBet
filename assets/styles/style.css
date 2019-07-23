@@ -50,6 +50,16 @@ font-weight: bold;
 }
 
 
+.footer{
+    margin-top: 20px;
+    text-align: center;
+    border-style: groove;
+    border-color: white;
+    border-width: 3px;
+    vertical-align: center;
+    padding-top: 10px;
+    display: inline-block;
+}
 
 @media screen and (max-width: 640px) {
 
