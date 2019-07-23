@@ -65,112 +65,124 @@
 </head>
 
 <body>
-    <!--[if lt IE 7]>
+    <div id="content">
+        <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bet.html">Bet Slip</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-            </ul>
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bet.html">Bet Slip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
 
-        </div>
+            </div>
 
-        <h3 id="appName">SLAP BET</h3>
-        
-        
-    </nav>
+            <h3 id="appName">SLAP BET</h3>
 
-    <!-- MAIN CONTENT OF THE PAGE -->
-    <div class="container" id="mainContainer">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="dropdown">
-                    <!-- Dropdown button for picking a League -->
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pick a League
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" id="mls-button" type="button">MLS-soccer</button>
-                        <button class="dropdown-item" id="nfl-button" type="button">NFL-football</button>
+
+        </nav>
+
+        <!-- MAIN CONTENT OF THE PAGE -->
+        <div class="container" id="mainContainer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="dropdown">
+                        <!-- Dropdown button for picking a League -->
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pick a League
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" id="mls-button" type="button">MLS-soccer</button>
+                            <button class="dropdown-item" id="nfl-button" type="button">NFL-football</button>
+                        </div>
                     </div>
+
+                    <!-- Table where Teams and H2H odds are displayed -->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <h5></h5>
+                                <th scope="col">
+                                    <h5>Home Team</h5>
+                                </th>
+                                <th scope="col">
+                                    <h5>Away Team</h5>
+                                </th>
+                                <th scope="col">
+                                    <h5>H2H Odds</h5>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="matches"></tbody>
+                    </table>
                 </div>
 
-                <!-- Table where Teams and H2H odds are displayed -->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <h5></h5>
-                            <th scope="col">
-                                <h5>Home Team</h5>
-                            </th>
-                            <th scope="col">
-                                <h5>Away Team</h5>
-                            </th>
-                            <th scope="col">
-                                <h5>H2H Odds</h5>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="matches"></tbody>
-                </table>
-            </div>
+                <!-- Game Highlights -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Head to Head Odds</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas class="chart" id="myChart" height="100" width="100"></canvas>
+                        </div>
 
-            <!-- Game Highlights -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Head to Head Odds</h5>
                     </div>
-                    <div class="card-body">
-                        <canvas class="chart" id="myChart" height="100" width="100"></canvas>
-                    </div>
-
                 </div>
             </div>
-        </div>
 
-        <!-- Graphs are displayed here -->
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Game Highlights</h5>
+            <!-- Graphs are displayed here -->
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Game Highlights</h5>
+                        </div>
+
+                        <div class="card-body" id="highlights"></div>
                     </div>
 
-                    <div class="card-body" id="highlights"></div>
                 </div>
 
             </div>
 
+
+
+
+
         </div>
-
-            <div class="footer col-sm-4" id="footer">
-                <span><h6>IF YOU HAVE A GAMBLING PROBLEM, CALL 1-800-GAMBLER.</h6></span>
-            </div>
-
-        
-        
     </div>
 
-    
+    <footer>
+        <div class="footer col-sm-4" id="footer">
+            <span>
+                <h6>IF YOU HAVE A GAMBLING PROBLEM, CALL 1-800-GAMBLER.</h6>
+            </span>
+        </div>
+        <p id="foot">
+            Copyright Slap Bet &copy;2019
+        </p>
+
+    </footer>
+
+
 
     <!-- home.js Link -->
     <script src="assets/js/home.js"></script>
