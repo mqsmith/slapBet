@@ -52,63 +52,81 @@
 </head>
 
 <body>
+    <div id="content">
 
 
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bet.html">Bet Slip</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="contact.html">Contact Us <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
-        <h3 id="appName">SLAP BET</h3>
-    </nav>
-
-    <!-- MAIN CONTENT OF THE PAGE -->
-    <div class=container>
-        <div class="card" id="bet">
-            <div class="card-header">
-                <h5>Contact Us</h5>
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bet.html">Bet Slip</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contact.html">Contact Us <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <!-- Form to send an email slapbetinfo@gmail.com -->
-                        <form method="POST" action="https://formspree.io/slapbetinfo@gmail.com">
-                            <br>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" name=email class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Enter email">
-                                <small id="emailHelp" class="form-text text-muted"></small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Contact Us </label>
-                                <textarea class="form-control" name=message id="exampleFormControlTextarea1"
-                                    rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Contact Us</button>
-                        </form>
+            <h3 id="appName">SLAP BET</h3>
+        </nav>
+
+        <!-- MAIN CONTENT OF THE PAGE -->
+        <div class=container>
+            <div class="card" id="bet">
+                <div class="card-header">
+                    <h5>Contact Us</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <!-- Form to send an email slapbetinfo@gmail.com -->
+                            <form method="POST" action="https://formspree.io/slapbetinfo@gmail.com">
+                                <br>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" name=email class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small id="emailHelp" class="form-text text-muted"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Contact Us </label>
+                                    <textarea class="form-control" name=message id="exampleFormControlTextarea1"
+                                        rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-dark">Contact Us</button>
+                            </form>
+                        </div>
+
                     </div>
-                    
+
                 </div>
             </div>
 
-            <!-- contact.js Link -->
-            <script src="assets/js/contact.js"></script>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer col-sm-4" id="footer">
+            <span>
+                <h6>IF YOU HAVE A GAMBLING PROBLEM, CALL 1-800-GAMBLER.</h6>
+            </span>
+        </div>
+        <p id="foot">
+            Copyright Slap Bet &copy;2019
+        </p>
+
+    </footer>
+
+    <!-- contact.js Link -->
+    <script src="assets/js/contact.js"></script>
 
 </body>
 

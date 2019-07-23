@@ -5,6 +5,11 @@ body {
     background-size: cover;
 }
 
+#content {
+    height: 105%;
+    min-height: 100vh;
+}
+
 #mainContainer, #bet{
     margin-top: 20px;
 }
@@ -49,7 +54,33 @@ font-weight: bold;
     margin-top: 20px;
 }
 
+footer {
+    position: absolute;
+    bottom: -32px;
+    color: #ffffff;
+    text-align: center;
+    border-top: 8px solid #e8ecef;
+    background-color: #343a40;
+    height: 90px;
+    width: 100%;
+   
+}
 
+#foot {
+    margin-top: 10px;
+    margin-bottom: 0px;  
+}
+
+.footer{
+    margin-top: 5px;
+    text-align: center;
+    border-style: groove;
+    border-color: white;
+    border-width: 3px;
+    vertical-align: center;
+    padding-top: 10px;
+    display: inline-block;
+}
 
 @media screen and (max-width: 640px) {
 

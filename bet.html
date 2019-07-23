@@ -48,128 +48,152 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"
         integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
 
-  
+
 
 </head>
 
 <body>
-    <!--[if lt IE 7]>
+
+    <div id="content">
+
+
+        <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
-    <!-- Nan Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="bet.html">Bet Slip <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-            </ul>
-        </div>
-        <h3 id="appName">SLAP BET</h3>
-    </nav>
-
-    <!-- MAIN CONTENT OF THE PAGE -->
-    <div class="container">
-        <div class="card" id="bet">
-            <div class="card-header">
-                <h5>Bet Slip</h5>
+        <!-- Nan Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <img src="./assets/images/slap.gif" class="mr-3" id="slapgif" alt="SlapBetLogo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="bet.html">Bet Slip <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
             </div>
-            <div class="card-body">
-                <!-- Form where user inputs bet information -->
-                <form>
-                    <div class="form-row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <!-- Labeling the bet -->
-                                <label for="exampleInputBet">Bet Name</label>
-                                <input type="name" class="form-control" id="exampleInputBet" aria-describedby="betHelp"
-                                    placeholder="Enter Bet Name">
-                            </div>
-                            <div class="form-group">
-                                <!-- Adding other users -->
-                                <label for="exampleInputFriends">Add Friends</label>
-                                <input type="username" class="form-control" id="exampleInputFriends"
-                                    placeholder="Enter Email Address">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <!-- The game being bet on -->
-                            <label for="exampleBet">What is your bet?</label>
-                            <input type="username" class="form-control" id="exampleBet" placeholder="Text Here">
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <!-- Picking number of slaps -->
-                                <label for="exampleFormControlSelect1">Number of SLAPS</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>5</option>
-                                    <option>10</option>
-                                    <option>100</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Button to create a bet -->
-                    <button type="submit" class="btn btn-dark" id="create-bet-button">SLAPBET</button>
-                </form>
-            </div>
-        </div>
+            <h3 id="appName">SLAP BET</h3>
+        </nav>
 
-        <!-- Modal -->
-        <div id="alertModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <p></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <div>
-            <div id="bets-here" class="card card-default">
+        <!-- MAIN CONTENT OF THE PAGE -->
+        <div class="container">
+            <div class="card" id="bet">
                 <div class="card-header">
-                    <h5>My Bets</h5>
+                    <h5>Bet Slip</h5>
                 </div>
-                <!-- Table where bets are displayed -->
-                <table class="table card-body">
-                    <thead>
-                        <tr>
-                            <th scope="col"><h6>Bet Name</h6></th>
-                            <th scope="col"><h6>Who's In</h6></th>
-                            <th scope="col"><h6>What's the Bet</h6></th>
-                            <th scope="col"><h6>Slaps at Stake</h6></th>
-                        </tr>
-                    </thead>
-                    <tbody class="slaps"></tbody>
-                </table>
+                <div class="card-body">
+                    <!-- Form where user inputs bet information -->
+                    <form>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <!-- Labeling the bet -->
+                                    <label for="exampleInputBet">Bet Name</label>
+                                    <input type="name" class="form-control" id="exampleInputBet"
+                                        aria-describedby="betHelp" placeholder="Enter Bet Name">
+                                </div>
+                                <div class="form-group">
+                                    <!-- Adding other users -->
+                                    <label for="exampleInputFriends">Add Friends</label>
+                                    <input type="username" class="form-control" id="exampleInputFriends"
+                                        placeholder="Enter Email Address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <!-- The game being bet on -->
+                                <label for="exampleBet">What is your bet?</label>
+                                <input type="username" class="form-control" id="exampleBet" placeholder="Text Here">
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <!-- Picking number of slaps -->
+                                    <label for="exampleFormControlSelect1">Number of SLAPS</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button to create a bet -->
+                        <button type="submit" class="btn btn-dark" id="create-bet-button">SLAPBET</button>
+                    </form>
+                </div>
             </div>
+
+            <!-- Modal -->
+            <div id="alertModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div>
+                <div id="bets-here" class="card card-default">
+                    <div class="card-header">
+                        <h5>My Bets</h5>
+                    </div>
+                    <!-- Table where bets are displayed -->
+                    <table class="table card-body">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <h6>Bet Name</h6>
+                                </th>
+                                <th scope="col">
+                                    <h6>Who's In</h6>
+                                </th>
+                                <th scope="col">
+                                    <h6>What's the Bet</h6>
+                                </th>
+                                <th scope="col">
+                                    <h6>Slaps at Stake</h6>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="slaps"></tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
+    <footer>
+        <div class="footer col-sm-4" id="footer">
+            <span>
+                <h6>IF YOU HAVE A GAMBLING PROBLEM, CALL 1-800-GAMBLER.</h6>
+            </span>
+        </div>
+        <p id="foot">
+            Copyright Slap Bet &copy;2019
+        </p>
 
+    </footer>
     <!-- bet.js Link -->
     <script src="assets/js/bet.js"></script>
 </body>
