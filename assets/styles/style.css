@@ -49,6 +49,13 @@ font-weight: bold;
     margin-top: 20px;
 }
 
-.chart{
-    width: 75%;
+
+
+@media screen and (max-width: 640px) {
+
+    
+    img{
+        height: 225px;
+        width: 400px;
+    }
 }
