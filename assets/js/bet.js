@@ -1,10 +1,12 @@
 console.log("Bet Page")
 
+// Global variables
 var betName;
 var addFriends;
 var gameBet;
 var numberOfSlaps;
 
+// Variable for Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyDb61eAKxoJbSt9g6NjdhSe2wa9xd4nSr0",
     authDomain: "slapbet-ecc3b.firebaseapp.com",
@@ -19,6 +21,7 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
+// Pulling info from the database using chil_added and displaying in a table
 database.ref('bets/').on("child_added", function makeDiv(snapshot) {
 
     // Log everything that's coming out of snapshot
@@ -38,6 +41,7 @@ database.ref('bets/').on("child_added", function makeDiv(snapshot) {
     console.log("Errors handled: " + errorObject.code);
 });
 
+// Create bet button
 $("#create-bet-button").on("click", function (event) {
     event.preventDefault();
 
@@ -50,11 +54,11 @@ $("#create-bet-button").on("click", function (event) {
     console.log(gameBet);
     console.log(numberOfSlaps);
 
+    // Conditional check for valid input using modals to alert the user
     if ($.trim(addFriends).length == 0) {
         var message = 'Please Enter a valid email address.';
         $('#alertModal').find('.modal-body p').text(message);
         $('#alertModal').modal('show');
-        
     }
     if (validateEmail(addFriends)) {
         var message = 'Valid Email!';
@@ -66,17 +70,15 @@ $("#create-bet-button").on("click", function (event) {
         var message = 'Please Enter a valid email address.';
         $('#alertModal').find('.modal-body p').text(message);
         $('#alertModal').modal('show');
-        
     }
-
-   
-
+    // Emptys the input fields
     $("#exampleInputBet").val("");
     $("#exampleInputFriends").val("");
     $("#exampleBet").val("");
     $("#exampleFormControlSelect1").val("1");
 });
 
+// Validates email
 function validateEmail(sEmail) {
     var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (filter.test(sEmail)) {
@@ -87,6 +89,7 @@ function validateEmail(sEmail) {
     }
 }
 
+// Adds information to the database
 function pushData(){
     database.ref('bets/').push({
         Name: betName,

@@ -1,4 +1,9 @@
+// Global variables
+var chartTeams = [];
+var chartOdds = [];
+var emptyArray = [];
 
+// Firebase variable
 var firebaseConfig = {
   apiKey: "AIzaSyDb61eAKxoJbSt9g6NjdhSe2wa9xd4nSr0",
   authDomain: "slapbet-ecc3b.firebaseapp.com",
@@ -13,36 +18,35 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-// API Call for highlight videos
-
+// API Call using AJAX for highlight videos
 function soccerHighlights() {
   var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4346";
   // NFL ID = 4391
   // MLS ID = 4346
-
   $.ajax({
     url: queryURL,
     method: "GET"
   })
-
     // After the data from the AJAX request comes back
     .then(function (response) {
       // Storing an array of results in the results variable
       console.log(response);
       console.log(response.events[0].strVideo);
       for (i = 0; i < response.events.length; i++) {
-
         var highlight = response.events[i].strVideo;
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo +"'>"
-            + response.events[i].strEvent + "</a></div>");
+          var stringHighlight = String(highlight);
+          var splitHighlight = stringHighlight.substr(32, 11);
+          console.log(splitHighlight);
+          console.log(thumbnail);
+          var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
+          $("#highlights").append("<div class='highlight-url'id='thumb'><a href='" + response.events[i].strVideo + "'target='_blank'><img src='" + thumbnail + "'></a></div>");
         }
-
       }
     });
 }
-
+// API Call using AJAX for highlight videos
 function nflHighlights() {
   var queryURL = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=4391";
   // NFL ID = 4391
@@ -52,91 +56,64 @@ function nflHighlights() {
     url: queryURL,
     method: "GET"
   })
-
     // After the data from the AJAX request comes back
     .then(function (response) {
       // Storing an array of results in the results variable
       console.log(response);
       console.log(response.events[0].strVideo);
-      for (i = 0; i < response.events.length; i++) {
 
+      for (i = 0; i < response.events.length; i++) {
         var highlight = response.events[i].strVideo;
         console.log(highlight);
         if (highlight !== null && highlight !== "") {
-          $("#highlights").append("<div class='highlight-url'><a href='" + response.events[i].strVideo +"'>"
-            + response.events[i].strEvent + "</a></div>");
+          var stringHighlight = String(highlight);
+          var splitHighlight = stringHighlight.substr(32, 11);
+          console.log(splitHighlight);
+          console.log(thumbnail);
+          var thumbnail = "https://img.youtube.com/vi/" + splitHighlight + "/0.jpg";
+          $("#highlights").append("<div class='highlight-url'id='thumb'><a href='" + response.events[i].strVideo + "'target='_blank'><img src='" + thumbnail + "'></a></div>");
         }
 
       }
     });
 }
 
-
-
-
-$("#login").on("click", function (event) {
-  event.preventDefault();
-  var email = $("#exampleInputEmail1").val().trim();
-  var password = $("#exampleInputPassword1").val().trim();
-  console.log(email);
-  console.log(password);
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-
-  });
-  $("#exampleInputEmail1").val("");
-  $("#exampleInputPassword1").val("");
-  writeUserData(email, password);
-});
-
-function writeUserData(email, password) {
-  database.ref('users/').push({
-    username: email,
-    password: password,
-    //   UID: User UID,
-  });
-}
-
-// *** D3 API CALL ***
+// *** API Calls using D3 ***
+// Function creating MLS odds data
 function importSoccerData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
-
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
   d3.json(queryURL, function (data) {
     var gameBetween = data.data[0].teams;
     var h2hArray = data.data[0].sites[0].odds.h2h;
-
     console.log(data.data);
-
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
-        " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
-      console.log(data.data[i].teams);
-      console.log(data.data[i].sites[0].odds.h2h);
+      $(".matches").append("<tr class='well' data-state='" + data.data[i].sites[0].odds.h2h + "'id='" + data.data[i].teams + "'>" + "<td class='home' home='" + data.data[i].teams[0] + "'>" + data.data[i].teams[0] + "</td>" + "<td class='away' away='" + data.data[i].teams[1] + "'>" + data.data[i].teams[1] + "</td>"
+        + "<td class='odds' odds-data='" + data.data[i].sites[0].odds.h2h + "'>" + data.data[i].sites[0].odds.h2h);
+      // console.log(data.data[i].teams);
+      // console.log(data.data[i].sites[0].odds.h2h);
 
     };
   })
 }
+
+// Function creating NFL odds data
 function importFootballData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=afd1f6803bcc123bffedb1e448fed02d";
-
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
   d3.json(queryURL, function (data) {
-    var gameBetween = data.data[0].teams;
-    var h2hArray = data.data[0].sites[0].odds.h2h;
-
     console.log(data.data);
-
     for (i = 0; i < data.data.length; i++) {
-      $(".matches").append("<tr class='well'><th class='teams'> " + data.data[i].teams +
-        " </td><td class='odds-data'> " + data.data[i].sites[0].odds.h2h);
-      console.log(data.data[i].teams);
+      $(".matches").append("<tr class='well' data-state='" + data.data[i].sites[0].odds.h2h + "'id='" + data.data[i].teams + "'>" + "<td class='home' home='" + data.data[i].teams[0] + "'>" + data.data[i].teams[0] + "</td>" + "<td class='away' away='" + data.data[i].teams[1] + "'>" + data.data[i].teams[1] + "</td>"
+        + "<td class='odds' odds-data='" + data.data[i].sites[0].odds.h2h + "'>" + data.data[i].sites[0].odds.h2h);
+      console.log(data.data[i].teams[0]);
+      console.log(data.data[i].teams[1]);
       console.log(data.data[i].sites[0].odds.h2h);
-
+      var gameBetween = data.data[i].teams;
+      var h2hArray = data.data[i].sites[0].odds.h2h;
     };
   })
 }
 
+// Dropdown button calling the creating MLS data
 $(".dropdown-menu").on("click", "#mls-button", function () {
   $(".matches").empty();
   $("#highlights").empty();
@@ -144,9 +121,105 @@ $(".dropdown-menu").on("click", "#mls-button", function () {
   soccerHighlights();
 });
 
+// Dropdown button calling the creating NFL data
 $(".dropdown-menu").on("click", "#nfl-button", function () {
   $(".matches").empty();
   $("#highlights").empty();
   importFootballData();
   nflHighlights();
 });
+
+// Event listener to get data from API calls
+$(document).on("mouseover", ".well", function () {
+  // homeTeam = $(".homeTeam").text();
+  // awayTeam = $(".awayTeam").text();
+  console.log("======================");
+  console.log("New mouseover:");
+  console.log(this);
+  chartOdds = $(this).attr("data-state");
+  names = $(this).attr("id");
+  console.log(names);
+  console.log(names.split(','));
+  names = names.split(',');
+  names.push("Draw");
+  chartTeams = names
+  var percentage = chartOdds.split(',');
+  console.log(percentage);
+
+  percentage.forEach(function (element) {
+    newvar = parseFloat(element);
+    console.log(newvar);
+    percentage.push(newvar)
+    console.log(percentage);
+  });
+  console.log(percentage);
+  console.log("---------------");
+  if (percentage.length === 6) {
+    percentage.splice(0, 3);
+  } else {
+    percentage.splice(0, 2);
+  };
+  console.log(percentage);
+  console.log(chartOdds);
+  empty();
+  for (i = 0; i < percentage.length; i++) {
+    chartOdds = (Math.floor((1 / percentage[i]) * 100));
+    emptyArray.push(chartOdds);
+    console.log(emptyArray);
+
+  }
+
+  chart(chartTeams, emptyArray);
+})
+
+// Function using Chart.js
+function chart(chartTeams, emptyArray) {
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartTeams,
+      datasets: [{
+        label: "",
+        data: emptyArray,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      tooltips: {
+        enabled: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
+function empty() {
+  //empty your array
+  emptyArray = [];
+}
