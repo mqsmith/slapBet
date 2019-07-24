@@ -6,8 +6,8 @@ body {
 }
 
 #content {
-    height: 105%;
-    min-height: 100vh;
+    height: 95%;
+    min-height: 95vh;
 }
 
 #mainContainer, #bet{
@@ -55,7 +55,7 @@ font-weight: bold;
 }
 
 footer {
-    position: absolute;
+   
     bottom: -32px;
     color: #ffffff;
     text-align: center;
