@@ -81,7 +81,7 @@ function nflHighlights() {
 // *** API Calls using D3 ***
 // Function creating MLS odds data
 function importSoccerData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&apiKey=95ce3aa6e09e8836e0c652450c356fe5";
   d3.json(queryURL, function (data) {
     var gameBetween = data.data[0].teams;
     var h2hArray = data.data[0].sites[0].odds.h2h;
@@ -98,7 +98,7 @@ function importSoccerData() {
 
 // Function creating NFL odds data
 function importFootballData() {
-  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=9c53b41aa2f34a685751ee0d10e5f3e7";
+  var queryURL = "https://api.the-odds-api.com/v3/odds?sport=americanfootball_nfl&region=us&apiKey=95ce3aa6e09e8836e0c652450c356fe5";
   d3.json(queryURL, function (data) {
     console.log(data.data);
     for (i = 0; i < data.data.length; i++) {
