@@ -1,4 +1,4 @@
-# slapBet - https://mqsmith.github.io/slapBet/
+# slapBet - http://www.mikeqsmith.com/slapBet/
 
 SlapBet is an interactive sports betting game that allows users to view real time Sports Data and Odds to make "Friendly Wagers" within their Network.
 
